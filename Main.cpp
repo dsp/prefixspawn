@@ -50,19 +50,19 @@ void ParseParameters (int argc, char **argv){
 
   for (int argno = 1; argno < argc; argno++){
     if (argv[argno][0] == '-'){
-      if      (!strcmp (argv[argno], "-version")){
-	Version();
+      if (!strcmp (argv[argno], "-version")){
+          Version();
       }
       else if (!strcmp (argv[argno], "-verbose")) {
-	toggle_verbose = true;
+          toggle_verbose = true;
       }
       else if (!strcmp (argv[argno], "-min_sup")) {
-	if (argno == argc - 1) cerr << "Must specify minimum support after -min_sup" << endl;
-	min_sup = atoi(argv[++argno]);
+          if (argno == argc - 1) cerr << "Must specify minimum support after -min_sup" << endl;
+          min_sup = atoi(argv[++argno]);
       }
       else if (!strcmp (argv[argno], "-max_pat")) {
-	if (argno == argc - 1) cerr << "Must specify miximum itemset size after -max_size" << endl;
-	max_pat = atoi(argv[++argno]);
+          if (argno == argc - 1) cerr << "Must specify miximum itemset size after -max_size" << endl;
+          max_pat = atoi(argv[++argno]);
       }
     }
     else {
