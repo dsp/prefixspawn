@@ -7,10 +7,16 @@ void Prefixspan::read(const string &_filename, Pairdata &pairdata) {
   string       line;
   int          item;
   unsigned int id = 0;
+  istream *is;
 
-  ifstream is(_filename.c_str());
+  if (_filename == "-") {
+    is = &cin;
+  } else {
+    is = new ifstream(_filename.c_str());
+  }
+
   Transaction transaction;
-  while (getline (is, line)) {
+  while (getline (*is, line)) {
     transaction.second.clear();
     vector<unsigned int> &itemsets = transaction.second;
     istrstream istrs ((char *)line.c_str());
@@ -22,6 +28,10 @@ void Prefixspan::read(const string &_filename, Pairdata &pairdata) {
     
     pairdata.database.push_back(transaction);
     pairdata.indeces.push_back(0);
+  }
+
+  if (_filename != "-") {
+      delete is;
   }
 }
 

@@ -64,6 +64,9 @@ void ParseParameters (int argc, char **argv){
           if (argno == argc - 1) cerr << "Must specify miximum itemset size after -max_size" << endl;
           max_pat = atoi(argv[++argno]);
       }
+      else if (!strcmp (argv[argno], "-")) {
+          filenames.push_back("-");
+      }
     }
     else {
       filenames.push_back(argv[argno]);
