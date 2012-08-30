@@ -8,6 +8,9 @@
 #include <fstream>
 #include <strstream>
 
+#include <stdlib.h>
+#include <string.h>
+
 using namespace std;
 
 typedef pair<unsigned int, vector<unsigned int> > Transaction; //<id <itemsets> >
