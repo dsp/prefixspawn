@@ -40,14 +40,12 @@ void Usage(){
        << "       -min_sup [minimum support]" << endl
        << "       -max_pat [maximum pattern]" << endl
        << endl;
-  exit(0);
 }
 
 /*****************************************************************************
  * ParseParameters
  *****************************************************************************/
 void ParseParameters (int argc, char **argv){
-  if (argc == 1) Usage();
   filenames.clear();
 
   for (int argno = 1; argno < argc; argno++){
@@ -71,4 +69,10 @@ void ParseParameters (int argc, char **argv){
       filenames.push_back(argv[argno]);
     }
   }
+
+  if (filenames.size() == 0) {
+      Usage();
+      exit(-1);
+  }
+
 }
