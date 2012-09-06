@@ -28,10 +28,12 @@ class Prefixspan {
   unsigned int min_sup;
   unsigned int max_pat;
   unsigned int max_sup;
+  unsigned int min_pat;
   vector<unsigned int> pattern;
 
 public:
-  Prefixspan(unsigned int _min_sup, unsigned int _max_pat, unsigned int _max_sup) : min_sup(_min_sup), max_pat(_max_pat), max_sup(_max_sup){};
+  Prefixspan(unsigned int _min_sup, unsigned int _max_pat, unsigned int _max_sup, unsigned int _min_pat)
+      : min_sup(_min_sup), max_pat(_max_pat), max_sup(_max_sup), min_pat(_min_pat){};
   void read(const string &_filename, Pairdata &pairdata);
   void print_pattern(Pairdata &projected);
   void run(const string &_filename);

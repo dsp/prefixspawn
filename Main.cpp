@@ -10,13 +10,14 @@ bool           toggle_verbose       = false;
 int            min_sup              = 1;    // minimum support for LCM
 int            max_pat              = 0;    // maximum_itemset_size : default infinity;
 int            max_sup              = 0;    // maximum_itemset_size : default infinity;
+int            min_pat              = 0;    // maximum_itemset_size : default infinity;
 
 int main(int argc, char **argv)
 {
   Version();
   ParseParameters(argc, argv);
   
-  Prefixspan prefixspan(min_sup, max_pat, max_sup);
+  Prefixspan prefixspan(min_sup, max_pat, max_sup, min_pat);
   prefixspan.run(filenames[0]);
   return 0;
 }
@@ -64,6 +65,10 @@ void ParseParameters (int argc, char **argv){
       else if (!strcmp (argv[argno], "-max_sup")) {
           if (argno == argc - 1) cerr << "Must specify maximum support after -max_sup" << endl;
           max_sup = atoi(argv[++argno]);
+      }
+      else if (!strcmp (argv[argno], "-min_pat")) {
+          if (argno == argc - 1) cerr << "Must specify minimum pattern after -min_pat" << endl;
+          min_pat = atoi(argv[++argno]);
       }
       else if (!strcmp (argv[argno], "-max_pat")) {
           if (argno == argc - 1) cerr << "Must specify miximum itemset size after -max_size" << endl;
