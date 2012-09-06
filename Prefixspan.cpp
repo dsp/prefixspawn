@@ -66,6 +66,8 @@ void Prefixspan::print_pattern(Pairdata &projected) {
 void Prefixspan::project(Pairdata &projected) {
   if (projected.database.size() < min_sup)
     return;
+  if (max_sup != 0 && projected.database.size() > max_sup)
+    return;
   
   print_pattern(projected);
 
